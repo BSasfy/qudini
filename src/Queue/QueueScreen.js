@@ -9,7 +9,8 @@ export default class extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            customers: []
+            customers: [],
+            name: ""
         };
     }
 
@@ -24,9 +25,17 @@ export default class extends Component {
     }
 
     render() {
-        let customers = [];
-        for(let i = 0; i < this.state.customers.length; ++i) {
-            customers.push(
+
+        const handleChange = (e) => {
+            e.preventDefault();
+            this.setState({
+                name: e.target.value
+            });
+        };
+
+        let customersArray = [];
+        for (let i = 0; i < this.state.customers.length; ++i) {
+            customersArray.push(
                 <div key={this.state.customers[i].id}>
                     <div>
                         {this.state.customers[i].customer.name}
@@ -37,8 +46,19 @@ export default class extends Component {
 
         return (
             <div>
+                <input placeholder="Enter Name" onChange={handleChange} />
                 {
-                    customers
+                    customersArray.filter(customer => {
+                        if (this.state.name === "") {
+                            return customer;
+                        } else if (customer.props.children.props.children.toLowerCase().includes(this.state.name.toLowerCase())) {
+                            return customer.props.children.props.children;
+                        }
+                    }).map((customer, index) => (
+                        <div key={index}>
+                            <p>{customer.props.children.props.children}</p>
+                        </div>
+                    ))
                 }
             </div>
         );
