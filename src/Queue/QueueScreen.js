@@ -86,10 +86,14 @@ export default class extends Component {
                         }
                     }).map((customer, index) => (
                         <div key={index}>
-                            <Customer name={customer.props.children.props.children[0]} />
-                            <img src={`https://gravatar.com/avatar/${customer.props.children.props.children[2]}`} alt={`${customer.props.children.props.children[0]}`} />
+                            <Customer
+                                name={customer.props.children.props.children[0]}
+                                image={customer.props.children.props.children[2]}
+                                expectedTime={customer.props.children.props.children[1]}
+                            />
+                            {/* <img src={`https://gravatar.com/avatar/${customer.props.children.props.children[2]}`} alt={`${customer.props.children.props.children[0]}`} />
                             <p>{customer.props.children.props.children[0]}</p>
-                            <p>{customer.props.children.props.children[1]}</p>
+                            <p>{customer.props.children.props.children[1]}</p> */}
                         </div>
                     ))
                 }

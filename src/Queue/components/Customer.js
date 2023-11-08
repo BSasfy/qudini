@@ -4,13 +4,15 @@ import ProfilePicture from './ProfilePicture';
 import Name from './Name';
 import Content from './Content';
 
-const Customer = (name) => {
+const Customer = (customer) => {
     return (
         <CustomerCard>
-            <ProfilePicture />
+            <ProfilePicture>
+                <img src={`https://gravatar.com/avatar/${customer.image}`} alt='' width='100%' />
+            </ProfilePicture>
             <Content>
-                <Name>{name.name}</Name>
-                <div></div>
+                <Name>{customer.name}</Name>
+                <div>{customer.expectedTime}</div>
             </Content>
         </CustomerCard>
     )

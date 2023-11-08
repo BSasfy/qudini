@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  padding-top: 1rem;
   border-style: solid;
   border-width: 1px;
   border-color: lightgray;

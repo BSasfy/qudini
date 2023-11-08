@@ -14,17 +14,16 @@ The new Queues screen feature should have the following capabilities:
 [x] Ability to list the current customers within a Queue.
     [x] This has been partially implemented.
 [x] Make a request to the Qudini Mock API and display the list of customers along with their expected time.
-[] Fix the way I'm getting the data
-    [] A `<Customer />` component was created by the previous engineer which you can use to render the content.
+    [x] A `<Customer />` component was created by the previous engineer which you can use to render the content.
 [x] Fetch the profile image of the customer using the Gravatar Image request API (https://en.gravatar.com/site/implement/images).
 [x] Ability to filter the list of returned customers using a text input component above the list.
 [x] Ability to refresh the list of customers every `30 seconds`.
-[] Styling 
+[x] Styling 
 
 We would like to see the following practised within the implementation:
-[] TDD / BDD
-[] Test coverage applied where needed.
-[] Some form of state management.
+[x] TDD / BDD
+[x] Test coverage applied where needed.
+[~] Some form of state management.
 
 You’re free to use any 3rd part library or framework if you can justify the need.
 
