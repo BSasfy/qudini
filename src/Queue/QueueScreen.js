@@ -71,6 +71,7 @@ export default class extends Component {
 
         return (
             <div>
+                <h2>Queue screen</h2>
                 <input placeholder="Enter Name" onChange={handleChange} />
                 <button type='button' onClick={populateData} disabled={this.state.isButtonDisabled}>
                     Refresh Names
@@ -85,6 +86,7 @@ export default class extends Component {
                         }
                     }).map((customer, index) => (
                         <div key={index}>
+                            <Customer name={customer.props.children.props.children[0]} />
                             <img src={`https://gravatar.com/avatar/${customer.props.children.props.children[2]}`} alt={`${customer.props.children.props.children[0]}`} />
                             <p>{customer.props.children.props.children[0]}</p>
                             <p>{customer.props.children.props.children[1]}</p>

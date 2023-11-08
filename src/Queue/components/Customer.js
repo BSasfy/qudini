@@ -4,11 +4,16 @@ import ProfilePicture from './ProfilePicture';
 import Name from './Name';
 import Content from './Content';
 
-export default () =>
-    <CustomerCard>
-        <ProfilePicture />
-        <Content>
-            <Name></Name>
-            <div></div>
-        </Content>
-    </CustomerCard>;
+const Customer = (name) => {
+    return (
+        <CustomerCard>
+            <ProfilePicture />
+            <Content>
+                <Name>{name.name}</Name>
+                <div></div>
+            </Content>
+        </CustomerCard>
+    )
+}
+
+export default Customer;
