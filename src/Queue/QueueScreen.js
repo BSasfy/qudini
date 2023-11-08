@@ -13,7 +13,10 @@ export default class extends Component {
         super(props);
         this.state = {
             customers: [],
-            name: ""
+            // needed for the search functionality
+            name: "",
+            // needed for refresh data functionality
+            isButtonDisabled: false
         };
     }
 
@@ -27,13 +30,29 @@ export default class extends Component {
             });
     }
     render() {
-
+        // function for search box
         const handleChange = (e) => {
             e.preventDefault();
             this.setState({
                 name: e.target.value
             });
         };
+
+
+        const populateData = () => {
+            fetchQueueData()
+                .then(response => response.json())
+                .then(json => {
+                    this.setState({
+                        customers: json.queueData.queue.customersToday
+                    })
+                });
+            this.setState({
+                isButtonDisabled: true
+            });
+
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 30000);
+        }
 
         let customersArray = [];
 
@@ -53,6 +72,9 @@ export default class extends Component {
         return (
             <div>
                 <input placeholder="Enter Name" onChange={handleChange} />
+                <button type='button' onClick={populateData} disabled={this.state.isButtonDisabled}>
+                    Refresh Names
+                </button>
 
                 {
                     customersArray.filter(customer => {
@@ -63,7 +85,7 @@ export default class extends Component {
                         }
                     }).map((customer, index) => (
                         <div key={index}>
-                            <img src={`https://gravatar.com/avatar/${customer.props.children.props.children[2]}`} />
+                            <img src={`https://gravatar.com/avatar/${customer.props.children.props.children[2]}`} alt={`${customer.props.children.props.children[0]}`} />
                             <p>{customer.props.children.props.children[0]}</p>
                             <p>{customer.props.children.props.children[1]}</p>
                         </div>
